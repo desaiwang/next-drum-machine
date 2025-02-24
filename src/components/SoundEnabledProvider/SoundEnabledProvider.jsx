@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 
-export const SoundEnabledContext = React.createContext();
+const SoundEnabledContext = React.createContext();
 
 function SoundEnabledProvider({ children }) {
   const [soundEnabled, setSoundEnabled] = React.useState(true);
@@ -19,6 +19,18 @@ function SoundEnabledProvider({ children }) {
       {children}
     </SoundEnabledContext>
   );
+}
+
+export function useSoundEnabled() {
+  const data = React.useContext(SoundEnabledContext);
+
+  if (!data) {
+    throw new Error(
+      "Cannot consume SoundEnabled context without a SoundEnabledProvider"
+    );
+  }
+
+  return data;
 }
 
 export default SoundEnabledProvider;
