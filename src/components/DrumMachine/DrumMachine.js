@@ -17,7 +17,7 @@ function DrumMachine() {
       snare: [666, 290],
       cowbell: [968, 200],
     },
-    soundEnabled: soundEnabled,
+    soundEnabled,
   });
 
   return (
